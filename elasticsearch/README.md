@@ -11,12 +11,12 @@ make add-repos deps install ENV=prod
 
 Endpoints
 
-- Client: ClusterIP `elasticsearch.sellio-data.svc:9200`
+- Client: ClusterIP `elasticsearch.sellio-infra.svc:9200`
 
 Scale
 
 ```bash
-helm upgrade --install elasticsearch . -n sellio-data -f ../envs/prod/values-elasticsearch.yaml --set replicas=1
+helm upgrade --install elasticsearch . -n sellio-infra -f ../envs/prod/values-elasticsearch.yaml --set replicas=1
 ```
 
 Uninstall

@@ -11,12 +11,12 @@ make add-repos deps install ENV=prod
 
 Endpoint
 
-- REST: ClusterIP `kafka-connect.sellio-data.svc:8083`
+- REST: ClusterIP `kafka-connect.sellio-infra.svc:8083`
 
 Apply a connector (manual)
 
 ```bash
-kubectl -n sellio-data port-forward svc/kafka-connect 8083:8083 &
+kubectl -n sellio-infra port-forward svc/kafka-connect 8083:8083 &
 curl -X POST -H 'Content-Type: application/json' \
   --data @configs/example-connector.json \
   http://localhost:8083/connectors

@@ -11,7 +11,7 @@ make add-repos deps install ENV=prod
 
 Endpoints
 
-- Entry: ClusterIP `redis-entrypoint.sellio-data.svc:6379`
+- Entry: ClusterIP `redis-entrypoint.sellio-infra.svc:6379`
 
 Uninstall
 

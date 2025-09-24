@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgresql-primary
-  namespace: sellio-data
+  namespace: sellio-infra
   labels:
     app.kubernetes.io/name: postgresql
     role: primary

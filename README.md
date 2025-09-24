@@ -18,8 +18,8 @@ make -C elasticsearch add-repos deps install ENV=prod
 
 Notes
 
-- Namespace is `sellio-data`.
-- All charts include NetworkPolicy (ingress from `sellio-data` and any ns labeled with `namePrefix=sellio`), PDB, and optional ServiceMonitor (`monitoring.enabled=false` by default).
+- Namespace is `sellio-infra`.
+- All charts include NetworkPolicy (ingress from `sellio-infra` and any ns labeled with `namePrefix=sellio`), PDB, and optional ServiceMonitor (`monitoring.enabled=false` by default).
 - Diff target uses `helm diff` if available; otherwise falls back to `helm upgrade --install --dry-run --debug`.
 
 

@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: elasticsearch-allow-only-sellio
-  namespace: sellio-data
+  namespace: sellio-infra
 spec:
   podSelector:
     matchLabels:
@@ -16,7 +16,7 @@ spec:
               namePrefix: sellio
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: sellio-data
+              kubernetes.io/metadata.name: sellio-infra
       ports:
         - protocol: TCP
           port: 9200

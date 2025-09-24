@@ -13,13 +13,13 @@ Scale
 
 ```bash
 # replicas = 1 primary + N replicas
-helm upgrade --install postgresql . -n sellio-data -f ../envs/prod/values-postgresql.yaml --set replicaCount=2
+helm upgrade --install postgresql . -n sellio-infra -f ../envs/prod/values-postgresql.yaml --set replicaCount=2
 ```
 
 Endpoints
 
-- Primary: ClusterIP `postgresql-primary.sellio-data.svc:5432`
-- Read:    ClusterIP `postgresql-read.sellio-data.svc:5432`
+- Primary: ClusterIP `postgresql-primary.sellio-infra.svc:5432`
+- Read:    ClusterIP `postgresql-read.sellio-infra.svc:5432`
 
 Uninstall
 

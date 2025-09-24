@@ -3,10 +3,10 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: elasticsearch
-  namespace: sellio-data
+  namespace: sellio-infra
 spec:
   namespaceSelector:
-    matchNames: ["sellio-data"]
+    matchNames: ["sellio-infra"]
   selector:
     matchLabels:
       app.kubernetes.io/name: elasticsearch

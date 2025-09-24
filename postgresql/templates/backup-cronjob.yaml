@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgresql-backup
-  namespace: sellio-data
+  namespace: sellio-infra
 spec:
   accessModes: ["ReadWriteOnce"]
   resources:
@@ -14,7 +14,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: postgresql-backup
-  namespace: sellio-data
+  namespace: sellio-infra
 spec:
   schedule: {{ .Values.backup.schedule | quote }}
   successfulJobsHistoryLimit: 1

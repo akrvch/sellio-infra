@@ -22,7 +22,7 @@ topics:
 
 Endpoint
 
-- Kafka: ClusterIP `kafka.sellio-data.svc:9092`
+- Kafka: ClusterIP `kafka.sellio-infra.svc:9092`
 
 Uninstall
 

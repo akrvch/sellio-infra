@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kafka
-  namespace: sellio-data
+  namespace: sellio-infra
   labels:
     app.kubernetes.io/name: kafka
 spec:
@@ -42,9 +42,9 @@ spec:
             - --reserve-memory=0M
             - --node-id=0
             - --kafka-addr=PLAINTEXT://0.0.0.0:9092
-            - --advertise-kafka-addr=PLAINTEXT://kafka.sellio-data.svc.cluster.local:9092
+            - --advertise-kafka-addr=PLAINTEXT://kafka.sellio-infra.svc.cluster.local:9092
             - --rpc-addr=0.0.0.0:33145
-            - --advertise-rpc-addr=kafka.sellio-data.svc.cluster.local:33145
+            - --advertise-rpc-addr=kafka.sellio-infra.svc.cluster.local:33145
             - --mode=dev-container
           ports:
             - name: kafka

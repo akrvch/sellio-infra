@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: postgresql-replica
-  namespace: sellio-data
+  namespace: sellio-infra
   labels:
     app.kubernetes.io/name: postgresql
     role: read

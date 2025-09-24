@@ -1,5 +1,5 @@
 CHART_NAME=postgresql
-NAMESPACE=sellio-data
+NAMESPACE=sellio-infra
 ENV?=prod
 VALUES=../envs/$(ENV)/values-$(CHART_NAME).yaml
 
