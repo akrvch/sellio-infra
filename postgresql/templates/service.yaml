@@ -1,0 +1,36 @@
+# Services for primary and read-only endpoints
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-primary
+  namespace: sellio-data
+  labels:
+    app.kubernetes.io/name: postgresql
+spec:
+  type: {{ .Values.service.primary.type }}
+  ports:
+    - name: postgres
+      port: {{ .Values.service.primary.port }}
+      targetPort: 5432
+  selector:
+    app.kubernetes.io/name: postgresql
+    role: primary
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-read
+  namespace: sellio-data
+  labels:
+    app.kubernetes.io/name: postgresql
+spec:
+  type: {{ .Values.service.read.type }}
+  ports:
+    - name: postgres
+      port: {{ .Values.service.read.port }}
+      targetPort: 5432
+  selector:
+    app.kubernetes.io/name: postgresql
+    role: read
+
+

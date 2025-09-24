@@ -1,0 +1,18 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postgresql
+  namespace: sellio-data
+spec:
+  namespaceSelector:
+    matchNames: ["sellio-data"]
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: postgresql
+  endpoints:
+    - port: metrics
+      interval: 30s
+{{- end }}
+
+

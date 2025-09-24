@@ -1,0 +1,8 @@
+apiVersion: v2
+name: redis
+description: Lightweight Redis (3 masters) for Sellio (minikube-friendly)
+type: application
+version: 0.1.0
+appVersion: "7"
+
+

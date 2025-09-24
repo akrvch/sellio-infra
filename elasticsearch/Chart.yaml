@@ -1,0 +1,8 @@
+apiVersion: v2
+name: elasticsearch
+description: Single-node Elasticsearch chart for Sellio (minikube-friendly)
+type: application
+version: 0.1.0
+appVersion: "8.12.0"
+
+

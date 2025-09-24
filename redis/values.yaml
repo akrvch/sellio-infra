@@ -1,0 +1,30 @@
+cluster:
+  enabled: true
+  nodes: 3
+image:
+  repository: redis
+  tag: "7"
+  pullPolicy: IfNotPresent
+resources: {}
+persistence:
+  enabled: true
+  size: 5Gi
+  storageClass: standard
+service:
+  entry:
+    type: ClusterIP
+    port: 6379
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints: []
+podSecurityContext:
+  fsGroup: 1001
+securityContext:
+  runAsUser: 1001
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+monitoring:
+  enabled: false
+
+

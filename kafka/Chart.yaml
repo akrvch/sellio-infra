@@ -1,0 +1,8 @@
+apiVersion: v2
+name: kafka
+description: Redpanda (Kafka API) single-node for Sellio (minikube-friendly)
+type: application
+version: 0.1.0
+appVersion: "23.2"
+
+

@@ -1,0 +1,18 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis
+  namespace: sellio-data
+spec:
+  namespaceSelector:
+    matchNames: ["sellio-data"]
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis
+  endpoints:
+    - port: redis
+      interval: 30s
+{{- end }}
+
+

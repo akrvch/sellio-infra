@@ -1,0 +1,18 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kafka
+  namespace: sellio-data
+spec:
+  namespaceSelector:
+    matchNames: ["sellio-data"]
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kafka
+  endpoints:
+    - port: admin
+      interval: 30s
+{{- end }}
+
+

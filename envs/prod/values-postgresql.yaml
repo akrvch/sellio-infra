@@ -1,0 +1,15 @@
+replicaCount: 2
+persistence:
+  size: 10Gi
+  storageClass: standard
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "600m"
+    memory: "512Mi"
+monitoring:
+  enabled: false
+
+

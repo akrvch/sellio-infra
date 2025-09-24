@@ -1,0 +1,22 @@
+replicas: 1
+resources:
+  requests:
+    cpu: "300m"
+    memory: "1Gi"
+  limits:
+    cpu: "1"
+    memory: "2Gi"
+persistence:
+  size: 10Gi
+  storageClass: standard
+service:
+  client:
+    type: ClusterIP
+    port: 9200
+extraEnvs:
+  - name: xpack.security.enabled
+    value: "false"
+monitoring:
+  enabled: false
+
+

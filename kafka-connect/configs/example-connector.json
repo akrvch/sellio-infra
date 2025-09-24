@@ -1,0 +1,11 @@
+{
+  "name": "example-file-sink",
+  "config": {
+    "connector.class": "FileStreamSink",
+    "tasks.max": "1",
+    "topics": "sellio.events.notifications",
+    "file": "/buffer/notifications.log"
+  }
+}
+
+

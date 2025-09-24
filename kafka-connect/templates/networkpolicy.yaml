@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: kafka-connect-allow-only-sellio
+  namespace: sellio-data
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: kafka-connect
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              namePrefix: sellio
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: sellio-data
+      ports:
+        - protocol: TCP
+          port: 8083
+
+

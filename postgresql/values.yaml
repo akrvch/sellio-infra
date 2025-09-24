@@ -1,0 +1,34 @@
+replicaCount: 2
+image:
+  repository: bitnami/postgresql
+  tag: "15"
+  pullPolicy: IfNotPresent
+service:
+  primary:
+    type: ClusterIP
+    port: 5432
+  read:
+    type: ClusterIP
+    port: 5432
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClass: standard
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints: []
+podSecurityContext:
+  fsGroup: 1001
+securityContext:
+  runAsUser: 1001
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+monitoring:
+  enabled: false
+backup:
+  schedule: "0 2 * * *"
+  retentionDays: 7
+
+

@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kafka-create-topics
+  namespace: sellio-data
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: rpk
+          image: redpandadata/redpanda:latest
+          command:
+            - /bin/bash
+            - -ec
+            - |
+              set -o pipefail
+              echo "Waiting for kafka service..."
+              for i in {1..60}; do nc -zv kafka.sellio-data.svc.cluster.local 9092 && break || sleep 2; done
+              {{- range .Values.topics }}
+              rpk topic create {{ .name }} --brokers kafka.sellio-data.svc.cluster.local:9092 --partitions {{ .partitions }} --replicas {{ .replicationFactor }} || true
+              {{- end }}
+
+

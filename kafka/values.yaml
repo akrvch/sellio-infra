@@ -1,0 +1,28 @@
+replicas: 1
+image:
+  repository: redpandadata/redpanda
+  tag: "latest"
+  pullPolicy: IfNotPresent
+resources: {}
+storage:
+  size: 10Gi
+  storageClass: standard
+service:
+  type: ClusterIP
+  port: 9092
+  adminPort: 9644
+topics: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
+topologySpreadConstraints: []
+podSecurityContext:
+  fsGroup: 101
+securityContext:
+  runAsUser: 101
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+monitoring:
+  enabled: false
+
+

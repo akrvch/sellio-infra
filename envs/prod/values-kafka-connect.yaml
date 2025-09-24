@@ -1,0 +1,31 @@
+replicas: 1
+image:
+  repository: confluentinc/cp-kafka-connect
+  tag: "7.6.0"
+resources:
+  requests:
+    cpu: "200m"
+    memory: "512Mi"
+  limits:
+    cpu: "800m"
+    memory: "1Gi"
+persistence:
+  plugins:
+    size: 1Gi
+    storageClass: standard
+  buffer:
+    size: 1Gi
+    storageClass: standard
+service:
+  type: ClusterIP
+  port: 8083
+env:
+  BOOTSTRAP_SERVERS: "kafka:9092"
+  GROUP_ID: "sellio-connect"
+  CONFIG_STORAGE_TOPIC: "__connect_configs"
+  OFFSET_STORAGE_TOPIC: "__connect_offsets"
+  STATUS_STORAGE_TOPIC: "__connect_status"
+monitoring:
+  enabled: false
+
+

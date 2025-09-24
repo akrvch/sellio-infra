@@ -1,0 +1,18 @@
+{{- if .Values.monitoring.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: elasticsearch
+  namespace: sellio-data
+spec:
+  namespaceSelector:
+    matchNames: ["sellio-data"]
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: elasticsearch
+  endpoints:
+    - port: http
+      interval: 30s
+{{- end }}
+
+
