@@ -40,23 +40,35 @@ spec:
             - name: {{ $k }}
               value: {{ $v | quote }}
             {{- end }}
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 30
           readinessProbe:
             httpGet:
               path: /connectors
               port: http
-            initialDelaySeconds: 20
+            initialDelaySeconds: 90
             periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 12
           livenessProbe:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 30
+            initialDelaySeconds: 120
             periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 6
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - name: plugins
-              mountPath: /usr/share/java
+              mountPath: /usr/share/java/plugins
             - name: buffer
               mountPath: /buffer
   volumeClaimTemplates:
