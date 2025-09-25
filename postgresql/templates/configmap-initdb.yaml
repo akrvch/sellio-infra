@@ -1,0 +1,35 @@
+{{- $initEnabled := true -}}
+{{- with .Values.initdb -}}
+{{-   $initEnabled = (default true .enabled) -}}
+{{- end -}}
+{{- if $initEnabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-initdb
+  namespace: {{ .Release.Namespace }}
+data:
+  01_init_databases.sql: |
+    -- Roles
+    DO $$
+    BEGIN
+      IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'user_main') THEN
+        CREATE ROLE user_main LOGIN;
+      END IF;
+      IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'user_cart') THEN
+        CREATE ROLE user_cart LOGIN;
+      END IF;
+      IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'user_notifications') THEN
+        CREATE ROLE user_notifications LOGIN;
+      END IF;
+    END$$ LANGUAGE plpgsql;
+
+    -- Set passwords (substituted via envsubst in the Job)
+    ALTER ROLE user_main PASSWORD '{{ "{{" }}MAIN_PASS{{ "}}" }}';
+    ALTER ROLE user_cart PASSWORD '{{ "{{" }}CART_PASS{{ "}}" }}';
+    ALTER ROLE user_notifications PASSWORD '{{ "{{" }}NOTIF_PASS{{ "}}" }}';
+
+    -- Database creation and per-DB grants are handled by the init Job for idempotency without extensions
+{{- end }}
+
+
