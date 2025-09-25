@@ -11,6 +11,9 @@ spec:
     - name: http
       port: {{ .Values.service.port }}
       targetPort: 8083
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort: 30883
+      {{- end }}
   selector:
     app.kubernetes.io/name: kafka-connect
 

@@ -11,6 +11,9 @@ spec:
     - name: redis
       port: {{ .Values.service.entry.port }}
       targetPort: 6379
+      {{- if eq .Values.service.entry.type "NodePort" }}
+      nodePort: 30637
+      {{- end }}
   selector:
     app.kubernetes.io/name: redis
 

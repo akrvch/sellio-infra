@@ -1,19 +1,19 @@
-Kafka Connect (single node)
+Kafka Connect (один вузол)
 
-Deploys a single-node Kafka Connect with two PVCs: `plugins` and `buffer`. Example connector config provided in `configs/example-connector.json`.
+Розгортає одновузловий Kafka Connect із двома PVC: `plugins` і `buffer`. Приклад конфігурації конектора в `configs/example-connector.json`.
 
-Install
+Встановлення
 
 ```bash
 kubectl apply -f ../common/namespace.yaml
 make add-repos deps install ENV=prod
 ```
 
-Endpoint
+Точка доступу
 
 - REST: ClusterIP `kafka-connect.sellio-infra.svc:8083`
 
-Apply a connector (manual)
+Додати конектор (вручну)
 
 ```bash
 kubectl -n sellio-infra port-forward svc/kafka-connect 8083:8083 &
@@ -22,7 +22,7 @@ curl -X POST -H 'Content-Type: application/json' \
   http://localhost:8083/connectors
 ```
 
-Uninstall
+Видалення
 
 ```bash
 make uninstall ENV=prod

@@ -1,4 +1,4 @@
-# Services for primary and read-only endpoints
+# Сервіси для primary та read-only кінцевих точок
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,6 +12,9 @@ spec:
     - name: postgres
       port: {{ .Values.service.primary.port }}
       targetPort: 5432
+      {{- if eq .Values.service.primary.type "NodePort" }}
+      nodePort: 30432
+      {{- end }}
   selector:
     app.kubernetes.io/name: postgresql
     role: primary
@@ -29,6 +32,9 @@ spec:
     - name: postgres
       port: {{ .Values.service.read.port }}
       targetPort: 5432
+      {{- if eq .Values.service.read.type "NodePort" }}
+      nodePort: 30433
+      {{- end }}
   selector:
     app.kubernetes.io/name: postgresql
     role: read

@@ -1,19 +1,19 @@
-Redis (3-node masters)
+Redis (3 вузли, masters)
 
-Deploys a lightweight Redis StatefulSet with 3 pods (if `cluster.enabled=true`), a headless service and an entry service `redis-entrypoint` for applications.
+Розгортає легкий Redis StatefulSet з 3 подами (якщо `cluster.enabled=true`), headless сервіс та entry-сервіс `redis-entrypoint` для застосунків.
 
-Install
+Встановлення
 
 ```bash
 kubectl apply -f ../common/namespace.yaml
 make add-repos deps install ENV=prod
 ```
 
-Endpoints
+Точки доступу
 
 - Entry: ClusterIP `redis-entrypoint.sellio-infra.svc:6379`
 
-Uninstall
+Видалення
 
 ```bash
 make uninstall ENV=prod

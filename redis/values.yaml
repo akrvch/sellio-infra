@@ -12,7 +12,7 @@ persistence:
   storageClass: standard
 service:
   entry:
-    type: ClusterIP
+    type: NodePort
     port: 6379
 nodeSelector: {}
 tolerations: []

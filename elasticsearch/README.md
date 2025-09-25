@@ -1,25 +1,25 @@
-Elasticsearch (single node)
+Elasticsearch (один вузол)
 
-Deploys a single-node Elasticsearch with a headless service for discovery and a client service on port 9200.
+Розгортає одновузловий Elasticsearch з headless-сервісом для discovery та клієнтським сервісом на порті 9200.
 
-Install
+Встановлення
 
 ```bash
 kubectl apply -f ../common/namespace.yaml
 make add-repos deps install ENV=prod
 ```
 
-Endpoints
+Точки доступу
 
 - Client: ClusterIP `elasticsearch.sellio-infra.svc:9200`
 
-Scale
+Масштабування
 
 ```bash
 helm upgrade --install elasticsearch . -n sellio-infra -f ../envs/prod/values-elasticsearch.yaml --set replicas=1
 ```
 
-Uninstall
+Видалення
 
 ```bash
 make uninstall ENV=prod

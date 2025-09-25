@@ -11,6 +11,9 @@ spec:
     - name: kafka
       port: {{ .Values.service.port }}
       targetPort: 9092
+      {{- if eq .Values.service.type "NodePort" }}
+      nodePort: 30992
+      {{- end }}
     - name: admin
       port: {{ .Values.service.adminPort }}
       targetPort: 9644

@@ -5,10 +5,10 @@ image:
   pullPolicy: IfNotPresent
 service:
   primary:
-    type: ClusterIP
+    type: NodePort
     port: 5432
   read:
-    type: ClusterIP
+    type: NodePort
     port: 5432
 persistence:
   enabled: true

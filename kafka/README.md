@@ -1,17 +1,17 @@
-Kafka (Redpanda single node)
+Kafka (Redpanda, один вузол)
 
-Deploys a single Redpanda node exposing Kafka API on 9092, with a post-install job to create topics.
+Розгортає один вузол Redpanda з Kafka API на 9092, а також post-install job для створення топіків.
 
-Install
+Встановлення
 
 ```bash
 kubectl apply -f ../common/namespace.yaml
 make add-repos deps install ENV=prod
 ```
 
-Topics
+Топіки
 
-Defined in `../envs/prod/values-kafka.yaml`. Example:
+Визначені у `../envs/prod/values-kafka.yaml`. Приклад:
 
 ```yaml
 topics:
@@ -20,11 +20,11 @@ topics:
     replicationFactor: 1
 ```
 
-Endpoint
+Точки доступу
 
 - Kafka: ClusterIP `kafka.sellio-infra.svc:9092`
 
-Uninstall
+Видалення
 
 ```bash
 make uninstall ENV=prod

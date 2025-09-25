@@ -14,7 +14,7 @@ persistence:
     size: 1Gi
     storageClass: standard
 service:
-  type: ClusterIP
+  type: NodePort
   port: 8083
 env: {}
 nodeSelector: {}

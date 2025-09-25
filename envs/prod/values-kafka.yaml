@@ -10,7 +10,7 @@ storage:
   size: 10Gi
   storageClass: standard
 service:
-  type: ClusterIP
+  type: NodePort
   port: 9092
 topics:
   - name: sellio.events.notifications
